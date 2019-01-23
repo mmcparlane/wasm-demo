@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script>
+            var importObject = {
+                js_custom_funcs: {
+                    print_stuff: (arg) => console.log(arg)}
+            };
+            WebAssembly.instantiateStreaming(fetch("example.wasm"), importObject)
+                .then((result) => {
+                    result.instance.exports.wasm_custom_func();
+                });
+        </script>
+    </head>
+    <body></body>
+</html>
